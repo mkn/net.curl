@@ -6,7 +6,7 @@ CWD="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 [ -z "$MKN_MAKE_THREADS" ] && MKN_MAKE_THREADS="$(nproc --all)"
 
-CURL="curl-7.56.1"
+CURL="curl-7.63.0"
 
 GZ_FILE="${CURL}.tar.gz"
 
@@ -17,9 +17,13 @@ GZ_FILE="${CURL}.tar.gz"
 rm -rf build
 mkdir -p build
 
-cd build
+pushd $CWD/build
 
 cmake -DCMAKE_INSTALL_PREFIX=$CWD/inst -DCMAKE_BUILD_TYPE=Release ../$CURL
 
 make -j${MKN_MAKE_THREADS}
 make install
+
+popd
+
+rm -rf $CWD/build
