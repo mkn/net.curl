@@ -1,0 +1,10 @@
+
+
+name: net.curl
+
+
+inc:  ./inst/include
+
+path: ./inst/lib
+
+lib: curl
